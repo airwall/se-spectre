@@ -1,0 +1,8 @@
+- if controller_name != 'sessions'
+  .shared-link
+    span Already have an account? Please&nbsp;
+    = link_to "Log in", new_session_path(resource_name)
+- if devise_mapping.registerable? && controller_name != 'registrations'
+  .shared-link
+    span Need an account?&nbsp;
+    = link_to "Sign up", new_registration_path(resource_name)

@@ -1,0 +1,20 @@
+.field-row {
+  margin-bottom: 15px;
+  input {
+    width: 100%;
+  }
+  input[type=text], input[type=email], input[type="password"] {
+    border: 1px solid $light-gray;
+    padding: 12px 13px;
+    border-radius: 2px;
+    font-size: 15px;
+    line-height: 20px;
+    background-color: $white;
+    box-shadow: none;
+    outline: 0;
+    transition: all .3s ease-in-out;
+    &:focus {
+      border-color: $cyan;
+    }
+  }
+}

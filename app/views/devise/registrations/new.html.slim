@@ -1,0 +1,12 @@
+section#user
+  .user-auth-block
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      .field-row
+        = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Enter email"
+      .field-row
+        = f.password_field :password, autocomplete: "off", placeholder: "Enter password"
+      .field-row
+        = f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm password"
+      .field-row
+        = f.submit "Create account", class: 'btn submit'
+  = render "devise/shared/links"

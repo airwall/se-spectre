@@ -38,6 +38,8 @@ gem 'slim'
 gem "autoprefixer-rails"
 gem "font-awesome-rails"
 
+gem 'devise'
+
 group :development, :test do
   gem 'pry'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

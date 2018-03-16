@@ -1,0 +1,49 @@
+section#user {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background-image: asset-url('sign-form');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+  flex-direction: column;
+  .user-auth-block {
+    padding: 35px 33px 32px;
+    background-color: $white;
+    max-width: 450px;
+    width: 450px;
+    border-radius: 3px;
+  }
+  .shared-link {
+    padding-top: 30px;
+    color: $white;
+    font-size: 15px;
+    a {
+      font-weight: 700;
+      transition: all .3s ease-in-out;
+      color: $white;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  #error_explanation {
+    background-color: rgba($light-gray, .3);
+    border: 1px solid rgba($gray, .5);
+    padding: 20px;
+    border-radius: 3px;
+    margin-bottom: 15px;
+    h2 {
+      font-size: 15px;
+    }
+    ul {
+      @include reset-list;
+      li {
+        font-size: 14px;
+        color: $cyan-dark;
+      }
+    }
+  }
+}

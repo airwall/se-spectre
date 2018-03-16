@@ -1,0 +1,21 @@
+.btn {
+  padding: 12px 40px;
+  border-radius: 3px;
+  font-size: 14px;
+  border: 0;
+  font-weight: 700;
+  box-shadow: none;
+  outline: 0;
+  text-align: center;
+  display: inline-block;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  &.submit {
+    background-color: $cyan;
+    color: $white;
+    font-weight: 400;
+    &:hover {
+      background-color: $cyan-dark;
+    }
+  }
+}
