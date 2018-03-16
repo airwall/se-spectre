@@ -1,0 +1,189 @@
+// useful
+@mixin cut-text {
+  overflow: hidden;
+  white-space: nowrap;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+
+@mixin ibreset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  background: none;
+}
+
+@mixin user-select {
+  -webkit-user-select: arguments;
+  -moz-user-select: arguments;
+  user-select: arguments;
+}
+
+@mixin user-select-none {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+@mixin aliasing {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+@mixin reset-offsets {
+  margin: 0;
+  padding: 0;
+}
+
+@mixin reset-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+@mixin stretch {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+@mixin cf {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin aspect-ratio($width, $height) {
+    position: relative;
+    &:before{
+        display: block;
+        content: " ";
+        width: 100%;
+        padding-top: ($height / $width) * 100%;
+    }
+
+    > .content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+}
+
+
+@mixin breakpoint($point, $opt) {
+   @if $point == xxlarge {
+     @if $opt == only {
+       @media (max-width: 250em) and (min-width: 90em) { @content ; }
+     }
+     @else if $opt == down {
+       @media (max-width: 250em) and (min-width: 0em) { @content ; }
+     }
+  }
+   @else if $point == xlarge {
+     @if $opt == only {
+       @media (max-width: 90) and (min-width: 75em) { @content ; }
+     }
+     @else if $opt == down {
+       @media (max-width: 90em) and (min-width: 0em) { @content ; }
+     }
+  }
+    @else if $point == large {
+     @if $opt == only {
+       @media (max-width: 75em) and (min-width: 64em) { @content ; }
+     }
+     @else if $opt == down {
+       @media (max-width: 75em) and (min-width: 0em) { @content ; }
+     }
+  }
+  @else if $point == medium {
+     @if $opt == only {
+       @media (max-width: 64em) and (min-width: 50em) { @content ; }
+     }
+     @else if $opt == down {
+       @media (max-width: 64em) and (min-width: 0em) { @content ; }
+     }
+  }
+  @else if $point == small {
+     @if $opt == only {
+       @media (max-width: 50em) and (min-width: 40em) { @content ; }
+     }
+     @else if $opt == down {
+       @media (max-width: 50em) and (min-width: 0em) { @content ; }
+     }
+  }
+    @else if $point == xsmall {
+     @if $opt == only {
+       @media (max-width: 40em) and (min-width: 0em) { @content ; }
+     }
+     @else if $opt == down {
+       @media (max-width: 40em) and (min-width: 0em) { @content ; }
+     }
+  }
+}
+
+/*
+  (TEXT) PARAMS
+  =================
+  1. Namespace
+  2. Intensity
+  3. Text color
+  4. Background color (flat)
+  5. Highlight #1 color
+  6. Highlight #2 color
+  7. Width (px)
+  8. Height (px)
+*/
+
+@mixin textGlitch($name, $intensity, $textColor, $background, $highlightColor1, $highlightColor2, $width, $height) {
+
+  color: $textColor;
+  position: relative;
+  $steps: $intensity;
+
+  // Ensure the @keyframes are generated at the root level
+  @at-root {
+    // We need two different ones
+    @for $i from 1 through 2 {
+      @keyframes #{$name}-anim-#{$i} {
+        @for $i from 0 through $steps {
+          #{percentage($i*(1/$steps))} {
+            clip: rect(
+              random($height)+px,
+              $width+px,
+              random($height)+px,
+              0
+            );
+          }
+        }
+      }
+    }
+  }
+  &:before,
+  &:after {
+    z-index: 1;
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: $background;
+    clip: rect(0, 0, 0, 0);
+  }
+  &:after {
+    left: 2px;
+    text-shadow: -1px 0 $highlightColor1;
+    animation: #{$name}-anim-1 2s infinite linear alternate-reverse;
+  }
+  &:before {
+    left: -2px;
+    text-shadow: 2px 0 $highlightColor2;
+    animation: #{$name}-anim-2 3s infinite linear alternate-reverse;
+  }
+
+}

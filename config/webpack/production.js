@@ -1,3 +1,7 @@
+const webpack = require('webpack')
 const environment = require('./environment')
 
-module.exports = environment.toWebpackConfig()
+const config = environment.toWebpackConfig()
+
+config.devtool = 'hidden-source-map'
+module.exports = config
