@@ -42,14 +42,13 @@ gem 'devise'
 
 gem 'rest-client'
 
-gem 'delayed_job_active_record'
-
 
 group :test do
   gem 'database_cleaner'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'rails-controller-testing'
   gem 'json_spec'
+  gem 'webmock'
 end
 
 group :development, :test do

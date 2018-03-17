@@ -18,7 +18,7 @@ class Saltedge
       params:     as_json(params)
     }
 
-    RestClient::Request.execute(
+    response = RestClient::Request.execute(
       method:  hash[:method],
       url:     hash[:url],
       payload: hash[:params],
@@ -31,8 +31,11 @@ class Saltedge
         "Secret"       => secret
       }
     )
+    data = { response: JSON.parse(response.body), status: response.code }
+
   rescue RestClient::Exception => error
-    pp JSON.parse(error.response)
+    data = { response: JSON.parse(error.response.body), status: error.response.code }
+    pp data
   end
 
   private

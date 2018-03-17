@@ -6,11 +6,9 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require "spec_helper"
 require "rspec/rails"
 require "shoulda/matchers"
+require 'webmock/rspec'
 
 ActiveRecord::Migration.maintain_test_schema!
-
-ENV["SALTEDGE_ID"] = "client"
-ENV["SALTEDGE_SECRET"] = "secret"
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures

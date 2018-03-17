@@ -7,6 +7,9 @@ class User < ApplicationRecord
   private
 
   def create_customer
-    Customer.delay.create(email)
+    client = Saltedge.new(ENV["SALTEDGE_ID"], ENV["SALTEDGE_SECRET"])
+    path = ENV["API_ROOT"] + "customers"
+    params = { data: { identifier: email } }
+    data = client.request("POST", path, params)
   end
 end
