@@ -32,7 +32,6 @@ class Saltedge
       }
     )
     data = { response: JSON.parse(response.body), status: response.code }
-    
   rescue RestClient::Exception => error
     data = { response: JSON.parse(error.response.body), status: error.response.code }
     pp data

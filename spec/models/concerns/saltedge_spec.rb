@@ -19,14 +19,13 @@ describe Saltedge do
   end
 
   describe ".request" do
-
     it "execute request" do
       allow(Time).to receive(:now).and_return(100 - 60)
       allow(Logger).to receive(:new).with(STDOUT).and_return("logger")
 
-      response = double('RestClient')
+      response = double("RestClient")
       allow(response).to receive(:code) { 200 }
-      allow(response).to receive(:body) { { data: { id: 1 }}.to_json }
+      allow(response).to receive(:body) { { data: { id: 1 } }.to_json }
 
       expect(RestClient::Request).to receive(:execute).with(
         method:  "GET",
@@ -44,6 +43,5 @@ describe Saltedge do
 
       saltedge.request("GET", "www.example.com", {})
     end
-
   end
 end
