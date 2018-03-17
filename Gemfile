@@ -40,12 +40,27 @@ gem "font-awesome-rails"
 
 gem 'devise'
 
+gem 'rest-client'
+
+gem 'delayed_job_active_record'
+
+
+group :test do
+  gem 'database_cleaner'
+  gem 'shoulda-matchers', '~> 3.1'
+  gem 'rails-controller-testing'
+  gem 'json_spec'
+end
+
 group :development, :test do
+  gem 'rspec', '~> 3.5.0.beta3'
+  gem 'rspec-rails', '~> 3.5.0beta3'
+  gem "factory_bot_rails"
   gem 'pry'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '~> 2.13'
+  # gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'dotenv-rails'
 end
