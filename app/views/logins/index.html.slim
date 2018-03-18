@@ -1,9 +1,9 @@
 section#customers
   .heading-wrap
     h3 connections
-  .main-content.connections-content
+  .main-content.large
     .connections
-      .table.connections-table
+      .table.large
         .th-row.hidden
           .th Id
           .th.compact Status
@@ -21,7 +21,8 @@ section#customers
             .td.compact = login["country_code"]
             .td.identificator
               = link_to "#{login['provider_name']}", login_path(id: login['id'])
-            .td.compact accounts
+            .td.compact
+              = link_to 'Accounts', accounts_path(login_id: login['id'])
             .td.compact
               ul.connection-actions
                 li

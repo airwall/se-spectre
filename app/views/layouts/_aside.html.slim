@@ -6,9 +6,11 @@
       .sidebar-wrap
         ul.sidebar-list
           li
-            = link_to 'customers', customers_path, class: "#{active_class?('customers')}"
+            = link_to 'customers', customers_path, class: "customers-side-link #{active_class?('customers')}"
           li
-            = link_to 'connections', logins_path, class: "#{active_class?('logins')}"
+            = link_to 'connections', logins_path, class: "connections-side-link #{active_class?('logins')}"
+          li
+            = link_to 'Accounts', accounts_path, class: "accounts-side-link #{active_class?('accounts')}"
       .sign-out-block
         = link_to destroy_user_session_path, method: :delete do
           span

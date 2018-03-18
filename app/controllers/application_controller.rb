@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   def api_callback(method, path, params)
     client = Saltedge.new
-    data = @client.request(method, path, params)
+    data = client.request(method, path, params)
     unless data[:status] == 200
       flash[:error] = data[:response]['error_message']
       redirect_to oops_path

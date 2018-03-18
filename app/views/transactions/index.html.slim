@@ -1,0 +1,21 @@
+section#tras
+  .heading-wrap
+    h3
+  .main-content.large
+    .connections
+      .table.large
+        .th-row.hidden
+          .th Id
+          .th.compact Made on
+          .th.compact Category
+          .th.identificator Description
+          .th Ammount
+        - @transactions.each do |transaction|
+          .th-row
+            .td = transaction['id']
+            .td.compact = transaction['made_on']
+            .td.compact = transaction['category']
+            .td.identificator = transaction['description']
+            .td.compact = transaction['amount']
+      .action-buttons
+        = link_to 'Back', accounts_path(login_id: @login_id), class: 'btn default'

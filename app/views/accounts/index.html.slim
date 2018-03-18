@@ -1,0 +1,23 @@
+section#accounts
+  .heading-wrap
+    h3 login ##{@login_id} accounts
+  .main-content.large
+    .connections
+      .table.large
+        .th-row.hidden
+          .th Id
+          .th.identificator Name
+          .th.compact Balance
+          .th Currency
+          .th.compact Nature
+          .th Transactions
+        - @accounts.each do |account|
+          .th-row
+            .td = account['id']
+            .td.identificator = account['name']              
+            .td.compact = account['balance']
+            .td = account['currency_code']
+            .td.compact = account['nature']
+            .td = link_to account['extra']['transactions_count']['posted'], account_transactions_path(login_id: account['login_id'], account_id: account['id'])
+      .action-buttons
+        = link_to 'Back', logins_path, class: 'btn default'

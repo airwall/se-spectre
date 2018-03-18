@@ -1,7 +1,7 @@
 
 class LoginsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_client
+  before_action :authenticate_spectre!
   before_action :set_login_id, only: %i(refresh reconnect destroy)
 
   def show
@@ -41,11 +41,7 @@ class LoginsController < ApplicationController
 
   def call_api(path)
     @data = { login_id: @id, return_to: logins_url, fetch_scopes: [ "accounts", "transactions" ] }
-    @response =  api_callback("POST", "tokens/#{path}", {data: @data})
-  end
-
-  def set_client
-    @client = Saltedge.new
+    @response = api_callback("POST", "tokens/#{path}", {data: @data})
   end
 
   def set_login_id

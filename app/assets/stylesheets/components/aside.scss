@@ -94,7 +94,15 @@ aside {
           background-color: transparent;
           background-position: center center;
           background-repeat: no-repeat;
+        }
+        &.customers-side-link:after{
           background-image: url("https://d1uuj3mi6rzwpm.cloudfront.net/assets/clients/sidebar-icons/dashboard-83320a19492ef65a0fbf5fda7b915cb12cdd9c453e93593465751067f31333ab.svg")
+        }
+        &.connections-side-link:after {
+          background-image: url("https://d1uuj3mi6rzwpm.cloudfront.net/assets/clients/sidebar-icons/connections-2fde559f4c9b412970d0fdb79e39b5eea1bd6a0712e7458da2eaf8d81795f908.svg");
+        }
+        &.accounts-side-link:after {
+          background-image: url("https://d1uuj3mi6rzwpm.cloudfront.net/assets/clients/sidebar-icons/account-36c2358c77ec120f6d0f36bcb10508f6de8b1896a6ac4819fa7be003e4115424.svg");
         }
         &:hover, &.active {
           background-color: $cyan;

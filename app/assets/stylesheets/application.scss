@@ -34,17 +34,20 @@
 
 .main-content {
   padding: 50px 0 60px;
-    width: 850px;
-    margin: 0 auto 59px;
-    background-color: $white;
-    border: 1px solid $light-gray;
-    border-radius: 4px;
-    a {
-      color: $cyan;
-      &:hover {
-        text-decoration: underline;
-      }
+  width: 850px;
+  margin: 0 auto 59px;
+  background-color: $white;
+  border: 1px solid $light-gray;
+  border-radius: 4px;
+  a {
+    color: $cyan;
+    &:hover {
+      text-decoration: underline;
     }
+  }
+  &.large {
+    width: 92%;
+  }
 }
 
 .action-buttons {
@@ -98,16 +101,22 @@
       &.date {
         width: 30%;
       }
+      &.slim {
+        width: 30px;
+      }
     }
     .td {
       padding: 15px 10px 10px 0;
       border-bottom: 1px solid $light;
       font-size: 15px;
       font-weight: 400;
-      &.date, &.compact {
-        color: #9d9d9d;
-      }
+      color: #9d9d9d;
     }
+  }
+  &.large {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 

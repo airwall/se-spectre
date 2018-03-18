@@ -14,5 +14,9 @@ Rails.application.routes.draw do
     post "destroy", to: "logins#destroy", as: :destroy
   end
 
+  resources :accounts, only: :index do
+    resources :transactions, only: :index
+  end
+
   get "oops", to: "application#bad_request", as: :oops
 end

@@ -1,7 +1,6 @@
 class CustomersController < ApplicationController
   before_action :authenticate_user!
-  before_action :authenticate_spectre!, except: :activate
-  before_action :set_client
+  before_action :authenticate_spectre!
 
   def index
     @customers = api_callback("GET", "customers", {})
@@ -34,9 +33,5 @@ class CustomersController < ApplicationController
 
   def is_spectre_active?
     current_user.spectre_active?
-  end
-
-  def set_client
-    @client = Saltedge.new
   end
 end
