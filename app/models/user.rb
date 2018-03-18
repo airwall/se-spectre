@@ -6,8 +6,8 @@ class User < ApplicationRecord
 
   def activate_spectre!
     create_customer
-    self.save!
-    self.spectre_active
+    save!
+    spectre_active
   end
 
   private
@@ -21,7 +21,7 @@ class User < ApplicationRecord
     path = "customers"
     params = { data: { identifier: identifier } }
     data = client.request("POST", path, params)
-    connected = data[:status] == 200 ? true : false
+    connected = data[:status] == 200
     self.spectre_active = connected
   end
 end

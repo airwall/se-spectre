@@ -13,7 +13,7 @@ class Saltedge
   def request(method, url, params={})
     hash = {
       method:     method,
-      url:        ENV['API_ROOT'] + url,
+      url:        ENV["API_ROOT"] + url,
       expires_at: (Time.now + EXPIRATION_TIME).to_i,
       params:     as_json(params)
     }

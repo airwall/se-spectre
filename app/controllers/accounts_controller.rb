@@ -1,7 +1,7 @@
 class AccountsController < ApplicationController
   before_action :authenticate_user!
   before_action :authenticate_spectre!
-  
+
   def index
     @login_id = params[:login_id]
     params = set_params(@login_id)
@@ -12,6 +12,6 @@ class AccountsController < ApplicationController
   private
 
   def set_params(login_id)
-    login_id.nil? ? '' : "?login_id=#{login_id}"
+    login_id.nil? ? "" : "?login_id=#{login_id}"
   end
 end

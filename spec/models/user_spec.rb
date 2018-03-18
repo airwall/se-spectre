@@ -14,7 +14,6 @@ RSpec.describe User, type: :model do
                   id: 11 } }.to_json
       }
 
-
       allow(RestClient::Request).to receive(:execute).and_return(response)
       result = { response: JSON.parse(response.body), status: response.code }
       allow(saltedge).to receive(:request).and_return(result)
@@ -31,7 +30,6 @@ RSpec.describe User, type: :model do
                   secret: "secret",
                   id: 11 } }.to_json
       }
-
 
       allow(RestClient::Request).to receive(:execute).and_return(response)
       result = { response: JSON.parse(response.body), status: response.code }

@@ -13,13 +13,14 @@ ActiveRecord::Migration.maintain_test_schema!
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
-
+  Dir[Rails.root.join("spec/shared/**/*.rb")].each { |f| require f }
   config.use_transactional_fixtures = false
 
   config.include FactoryBot::Syntax::Methods
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::Test::ControllerHelpers, type: :view
   config.include ActiveJob::TestHelper
+  config.extend RestClientInit, type: :controller
 
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)

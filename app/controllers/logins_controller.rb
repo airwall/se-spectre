@@ -1,8 +1,7 @@
-
 class LoginsController < ApplicationController
   before_action :authenticate_user!
   before_action :authenticate_spectre!
-  before_action :set_login_id, only: %i(refresh reconnect destroy)
+  before_action :set_login_id, only: %i[refresh reconnect destroy]
 
   def show
     @id = params[:id]
@@ -17,19 +16,19 @@ class LoginsController < ApplicationController
 
   def token
     @customer_id = params[:customer_id]
-    @data = { customer_id: @customer_id, return_to: root_url , fetch_scopes: [ "accounts", "transactions" ] }
-    @token = api_callback("POST", "tokens/create", {data: @data})
-    redirect_to get_data(@token)['connect_url']
+    @data = { customer_id: @customer_id, return_to: root_url, fetch_scopes: %w[accounts transactions] }
+    @token = api_callback("POST", "tokens/create", data: @data)
+    redirect_to get_data(@token)["connect_url"]
   end
 
   def refresh
-    call_api('refresh')
-    redirect_to @response[:response]['data']['connect_url']
+    call_api("refresh")
+    redirect_to @response[:response]["data"]["connect_url"]
   end
 
   def reconnect
-    call_api('reconnect')
-    redirect_to @response[:response]['data']['connect_url']
+    call_api("reconnect")
+    redirect_to @response[:response]["data"]["connect_url"]
   end
 
   def destroy
@@ -40,8 +39,8 @@ class LoginsController < ApplicationController
   private
 
   def call_api(path)
-    @data = { login_id: @id, return_to: logins_url, fetch_scopes: [ "accounts", "transactions" ] }
-    @response = api_callback("POST", "tokens/#{path}", {data: @data})
+    @data = { login_id: @id, return_to: logins_url, fetch_scopes: %w[accounts transactions] }
+    @response = api_callback("POST", "tokens/#{path}", data: @data)
   end
 
   def set_login_id

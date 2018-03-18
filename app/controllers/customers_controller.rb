@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
   before_action :authenticate_user!
-  before_action :authenticate_spectre!
+  before_action :authenticate_spectre!, except: :activate
 
   def index
     @customers = api_callback("GET", "customers", {})
