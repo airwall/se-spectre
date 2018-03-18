@@ -1,10 +1,15 @@
-aside
-  .aside-container
-    .logo
-      .brand
-    .sidebar-wrap
-      ul.sidebar-list
-        li
-          = link_to 'customers', customers_path, class: "#{active_class?('customers')}"
-        li
-          = link_to 'connections', logins_path, class: "#{active_class?('logins')}"
+- if user_signed_in?
+  aside
+    .aside-container
+      .logo
+        .brand
+      .sidebar-wrap
+        ul.sidebar-list
+          li
+            = link_to 'customers', customers_path, class: "#{active_class?('customers')}"
+          li
+            = link_to 'connections', logins_path, class: "#{active_class?('logins')}"
+      .sign-out-block
+        = link_to destroy_user_session_path, method: :delete do
+          span
+          | Logout

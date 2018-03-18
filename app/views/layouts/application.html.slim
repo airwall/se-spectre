@@ -10,7 +10,7 @@ html
   body
     #app
       = render 'layouts/aside'
-      .container
+      .container class="#{user_signed_in? ? '' : 'signed-out'}"
         transition name="fade"
           .loader v-if="loaderActive"
             loader

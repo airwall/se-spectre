@@ -22,5 +22,4 @@ document.addEventListener('turbolinks:load', () => {
       flash.style.display = 'none'
     }, 4050)
   }
-
 })

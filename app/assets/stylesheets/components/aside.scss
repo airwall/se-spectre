@@ -40,6 +40,36 @@ aside {
       padding-top: 19px;
       min-height: calc(100vh - 140px);
     }
+    .sign-out-block {
+      display: block;
+      height: 69px;
+      width: 100%;
+      @include cf;
+      a {
+        padding-top: 25px;
+        display: block;
+        height: 100%;
+        border-top: 1px solid #4f4f4f;
+        font-size: 16px;
+        text-align: center;
+        color: $white;
+        text-decoration: none;
+        background-color: $dark-gray;
+        transition: all 300ms ease-in-out;
+        &:hover {
+          background-color: $cyan;
+        }
+        span {
+          display: inline-block;
+          margin-right: 16px;
+          width: 15px;
+          height: 12px;
+          background-position: center center;
+          background-repeat: no-repeat;
+          background-image: url("https://d1uuj3mi6rzwpm.cloudfront.net/assets/clients/sidebar-icons/logout-b025eacda7c0c0705e5ae2e41b47350f4732afa205d3b6c66831ca5756a70acc.svg");
+        }
+      }
+    }
     .sidebar-list {
       @include reset-list;
       li a {
@@ -59,7 +89,6 @@ aside {
           content: "";
           position: absolute;
           top: 50%;
-          -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
           left: 25px;
           background-color: transparent;
