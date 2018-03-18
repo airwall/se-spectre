@@ -1,20 +1,27 @@
 <template lang="html">
-  <li>
-    <a href="#" class="destroy" @click.prevent="destroy()"></a>
-  </li>
+  <a href="#" :class="this.cl" @click.prevent="destroy()">{{ cl == 'destroy' ? '' : 'Destroy' }}</a>
 </template>
 
 <script>
 export default {
-  props: ['id'],
+  props: ['id', 'cl'],
   methods: {
     destroy() {
       this.$emit('loader-on')
-      this.$http.post('logins/' + this.id + '/destroy', {}).then(response => {
+      if (this.cl == 'destroy') {
+        var path = 'logins/' + this.id + '/destroy'
+      } else {
+        var path = this.id + '/destroy'
+      }
+      this.$http.post(path, {}).then(response => {
         setTimeout(() => {
-          document.getElementById('login-' + this.id).remove()
+          if (this.cl == 'destroy') {
+            document.getElementById('login-' + this.id).remove()
+          } else {
+            window.location.href = '/logins'
+          }
           this.$emit('loader-off')
-        }, 300)
+        }, 3000)
       }, response => {
         this.$emit('loader-off')
       });

@@ -12,4 +12,4 @@ section#customers
               = (value[1].is_a? Array) ? value[1].split.join(', ') : value[1]
     .action-buttons
       = link_to 'Back', logins_path, class: 'btn default'
-      a.btn.default Destroy
+      login-destroy :id="#{@login['id']}" @loader-on="loaderActive = true" @loader-off="loaderActive = false" :cl="'btn default'" Destroy

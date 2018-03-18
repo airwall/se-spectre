@@ -20,7 +20,7 @@ section#customers
             .td.compact = login['customer_id']
             .td.compact = login["country_code"]
             .td.identificator
-              = link_to "#{login['provider_name']}", login_path(id: login['id'])             
+              = link_to "#{login['provider_name']}", login_path(id: login['id'])
             .td.compact accounts
             .td.compact
               ul.connection-actions
@@ -28,4 +28,5 @@ section#customers
                   = link_to login_refresh_path(login_id: login['id']), method: :post, class: "reconnect", remote: true do
                 li
                   = link_to login_refresh_path(login_id: login['id']), method: :post, class: "refresh", remote: true do
-                login-destroy :id="#{login['id']}" @loader-on="loaderActive = true" @loader-off="loaderActive = false"
+                li
+                  login-destroy :id="#{login['id']}" @loader-on="loaderActive = true" @loader-off="loaderActive = false" :cl="'destroy'"
