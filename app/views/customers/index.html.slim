@@ -1,0 +1,15 @@
+section#customers
+  .heading-wrap
+    h3 custommers
+  .main-content
+    .table
+      .th-row.hidden
+        .th.identificator Identifier
+        .th.date
+        .th.compact
+      - @customers.each do |c|
+        .th-row
+          .td.identificator
+            = c['identifier']
+          .td.date
+            = render 'shared/connection', id: c['id']

@@ -1,0 +1,31 @@
+section#customers
+  .heading-wrap
+    h3 connections
+  .main-content.connections-content
+    .connections
+      .table.connections-table
+        .th-row.hidden
+          .th Id
+          .th.compact Status
+          .th Customer Id
+          .th Country Code
+          .th.compact Provider
+          .th.compact Accounts
+          .th.compact Actions
+        - @logins.each do |login|
+          .th-row id="login-#{login['id']}"
+            .td
+              = link_to "#{login['id']}", login_path(id: login['id'])
+            .td.compact = login['status']
+            .td.compact = login['customer_id']
+            .td.compact = login["country_code"]
+            .td.identificator
+              = link_to "#{login['provider_name']}", login_path(id: login['id'])             
+            .td.compact accounts
+            .td.compact
+              ul.connection-actions
+                li
+                  = link_to login_refresh_path(login_id: login['id']), method: :post, class: "reconnect", remote: true do
+                li
+                  = link_to login_refresh_path(login_id: login['id']), method: :post, class: "refresh", remote: true do
+                login-destroy :id="#{login['id']}" @loader-on="loaderActive = true" @loader-off="loaderActive = false"
