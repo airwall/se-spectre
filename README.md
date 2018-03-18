@@ -8,4 +8,4 @@ API_ROOT: 'https://www.saltedge.com/api/v4/'
 - TEST
 SALTEDGE_ID=client
 SALTEDGE_SECRET=secret
-API_ROOT=http://example.com
+API_ROOT=www.example.com/

@@ -2,11 +2,11 @@ require "rails_helper"
 require "rest-client"
 
 describe Saltedge do
-  let(:saltedge)  { Saltedge.new("client", "secret") }
+  let(:saltedge)  { Saltedge.new }
   let(:hash)      do
     {
       method: "GET",
-      url: "http://example.com",
+      url: "",
       expires_at: 100,
       params: ""
     }
@@ -29,7 +29,7 @@ describe Saltedge do
 
       expect(RestClient::Request).to receive(:execute).with(
         method:  "GET",
-        url:     "www.example.com",
+        url:     "www.example.com/",
         payload: "",
         log:     "logger",
         headers: {
@@ -41,7 +41,7 @@ describe Saltedge do
         }
       ).and_return(response)
 
-      saltedge.request("GET", "www.example.com", {})
+      saltedge.request("GET", "", {})
     end
   end
 end

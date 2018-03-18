@@ -5,19 +5,20 @@ class Saltedge
   attr_reader :app_id, :secret
   EXPIRATION_TIME = 60
 
-  def initialize(app_id, secret)
-    @app_id      = app_id
-    @secret      = secret
+  def initialize
+    @app_id      = ENV["SALTEDGE_ID"]
+    @secret      = ENV["SALTEDGE_SECRET"]
   end
 
   def request(method, url, params={})
     hash = {
       method:     method,
-      url:        url,
+      url:        ENV['API_ROOT'] + url,
       expires_at: (Time.now + EXPIRATION_TIME).to_i,
       params:     as_json(params)
     }
 
+    puts hash[:params]
     response = RestClient::Request.execute(
       method:  hash[:method],
       url:     hash[:url],
@@ -31,6 +32,7 @@ class Saltedge
         "Secret"       => secret
       }
     )
+    # binding.pry
     data = { response: JSON.parse(response.body), status: response.code }
   rescue RestClient::Exception => error
     data = { response: JSON.parse(error.response.body), status: error.response.code }
