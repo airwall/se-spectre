@@ -1,0 +1,15 @@
+section#customers
+  .heading-wrap
+    h3 = @customer['identifier']
+  .main-content
+    .table
+      .th-row.hidden
+        .th.identificator Identifier
+        .th.date
+      .th-row
+        .td.identificator
+          = @customer['identifier']
+        .td.date
+          = render 'shared/connection', id: @customer['id']
+    .action-buttons
+      = link_to 'Back', customers_path, class: 'btn default'

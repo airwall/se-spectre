@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root "logins#index"
 
   get "activate", to: "customers#activate", as: :activate
-  resources :customers, only: :index do
+  resources :customers, only: %i(index show) do
     resources :logins, only: :create
     post "token", to: "logins#token", as: :token
   end

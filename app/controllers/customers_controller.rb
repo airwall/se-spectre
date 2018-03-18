@@ -4,8 +4,14 @@ class CustomersController < ApplicationController
   before_action :set_client
 
   def index
-    @customers = @client.request("GET", "customers", {})
-    @customers = @customers[:response]['data']
+    @customers = api_callback("GET", "customers", {})
+    @customers = get_data(@customers)
+  end
+
+  def show
+    @id = params[:id]
+    @customer = api_callback("GET", "customers/#{@id}", {})
+    @customer = get_data(@customer)
   end
 
   def activate

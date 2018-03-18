@@ -10,6 +10,6 @@ section#customers
       - @customers.each do |c|
         .th-row
           .td.identificator
-            = c['identifier']
+            = link_to c['identifier'], customer_path(id: c['id'])
           .td.date
             = render 'shared/connection', id: c['id']
