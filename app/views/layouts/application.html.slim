@@ -8,4 +8,13 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'main'
   body
-    = yield
+    #app
+      = render 'layouts/aside'
+      .container
+        transition name="fade"
+          .loader v-if="loaderActive"
+            loader
+        .flash-messages
+          - flash.each do |key, value|
+            = content_tag :div, value, class: "flash #{key}", id: 'flash'
+        = yield

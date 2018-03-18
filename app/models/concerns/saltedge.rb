@@ -18,7 +18,6 @@ class Saltedge
       params:     as_json(params)
     }
 
-    puts hash[:params]
     response = RestClient::Request.execute(
       method:  hash[:method],
       url:     hash[:url],
@@ -32,7 +31,6 @@ class Saltedge
         "Secret"       => secret
       }
     )
-    # binding.pry
     data = { response: JSON.parse(response.body), status: response.code }
   rescue RestClient::Exception => error
     data = { response: JSON.parse(error.response.body), status: error.response.code }

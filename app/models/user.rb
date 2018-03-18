@@ -4,8 +4,13 @@ class User < ApplicationRecord
 
   before_create :create_customer
 
-  private
+  def activate_spectre!
+    create_customer
+    self.save!
+    self.spectre_active
+  end
 
+  private
 
   def create_customer
     identifier = Digest::MD5.hexdigest("#{SecureRandom.hex(12)}-#{email}")

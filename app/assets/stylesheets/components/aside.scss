@@ -1,0 +1,76 @@
+aside {
+  width: 16%;
+  min-width: 210px;
+  max-width: 300px;
+  min-height: 100vh;
+  background-color: $dark-gray;
+  position: relative;
+  z-index: 10;
+  .aside-container{
+    left: 0;
+    top: 0;
+    display: block;
+    width: 16%;
+    min-width: 210px;
+    max-width: 300px;
+    position: fixed;
+    background-color: $dark-gray;
+    @include cf;
+    .logo {
+      width: 100%;
+      min-width: 210px;
+      height: 70px;
+      background-color: $dark;
+      position: relative;
+      .brand {
+        width: 100%;
+        height: 100%;
+        float: left;
+        padding: 15px 15px;
+        font-size: 18px;
+        line-height: 20px;
+        background-color: transparent;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: 40%;
+        background-image: url("https://d1uuj3mi6rzwpm.cloudfront.net/assets/clients/private-logo-a585364e03bc52b7ac4fb39b8b3e64f12ac500e9e177f80497034488e8c227a9.svg")
+      }
+    }
+    .sidebar-wrap {
+      padding-top: 19px;
+      min-height: calc(100vh - 140px);
+    }
+    .sidebar-list {
+      @include reset-list;
+      li a {
+        display: block;
+        padding: 17px 10px 17px 55px;
+        font-size: 16px;
+        line-height: 22px;
+        font-weight: 400;
+        color: white;
+        position: relative;
+        text-decoration: none;
+        transition: all 300ms ease-in-out;
+        text-transform: capitalize;
+        &:after {
+          width: 14px;
+          height: 14px;
+          content: "";
+          position: absolute;
+          top: 50%;
+          -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+          left: 25px;
+          background-color: transparent;
+          background-position: center center;
+          background-repeat: no-repeat;
+          background-image: url("https://d1uuj3mi6rzwpm.cloudfront.net/assets/clients/sidebar-icons/dashboard-83320a19492ef65a0fbf5fda7b915cb12cdd9c453e93593465751067f31333ab.svg")
+        }
+        &:hover, &.active {
+          background-color: $cyan;
+        }
+      }
+    }
+  }
+}

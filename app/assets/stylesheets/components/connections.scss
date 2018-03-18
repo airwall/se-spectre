@@ -1,0 +1,76 @@
+.main-content.connections-content {
+  width: 92%;
+}
+
+
+.connections {
+  width: 92%;
+  padding: 50px 4.5%;
+  background-color: $white;
+  margin-left: auto;
+  margin-right: auto;
+  .table.connections-table {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .connection-actions {
+    min-height: 40px;
+    @include reset-list;
+    li {
+      display: inline-block;
+      a {
+        display: inline-block;
+        vertical-align: middle;
+        width: 30px;
+        height: 36px;
+        margin-bottom: 0;
+        background-color: transparent;
+        background-position: center;
+        background-repeat: no-repeat;
+        transition: all .3s ease-in-out;
+        opacity: .8;
+        position: relative;
+        &:after {
+          top: -25px;
+          left: -20px;
+          width: 70px;
+          height: 30px;
+          border-radius: 3px;
+          border: 1px solid $light-gray;
+          background-color: rgba($white, .6);
+          display: none;
+          font-size: 12px;
+          color: $black;
+          text-align: center;
+          line-height: 2.2;
+        }
+        &:hover {
+          opacity: 1;
+          &:after {
+            display: block;
+            position: absolute;
+          }
+        }
+        &.reconnect {
+          &:after {
+            content: 'Reconect';
+          }
+          background-image: url("https://d1uuj3mi6rzwpm.cloudfront.net/assets/clients/reconnect-icon-537c4278b066bd41afcb614a089b39ec7574b1c0c3ccc372b31e6fbe868221ac.svg");
+        }
+        &.refresh {
+          &:after {
+            content: 'Refresh';
+          }
+          background-image: url("https://d1uuj3mi6rzwpm.cloudfront.net/assets/clients/refresh-icon-955183055deecd19513140398707850f37d985684fabf082f98617fe2dec70c1.svg");
+        }
+        &.destroy {
+          &:after {
+            content: 'Destroy';
+          }
+          background-image: url("https://d1uuj3mi6rzwpm.cloudfront.net/assets/clients/delete-icon-f721ee1a57de0971c8cd516a8183b84442f74d772e04ec8783b2afbb3a2674e5.svg");
+        }
+      }
+    }
+  }
+}

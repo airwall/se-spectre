@@ -3,3 +3,129 @@
 @import "main";
 @import "font-awesome";
 @import "components/*";
+
+#app {
+  display: flex;
+  @include cf;
+}
+
+.container {
+  width: 84%;
+  display: inline-block;
+  background-color: $light;
+  position: relative;
+}
+
+.heading-wrap {
+  h3 {
+    margin-top: 50px;
+    text-align: center;
+    margin-bottom: 16px;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    color: $cyan;
+  }
+}
+
+.main-content {
+  padding: 50px 0 60px;
+    width: 850px;
+    margin: 0 auto 59px;
+    background-color: $white;
+    border: 1px solid $light-gray;
+    border-radius: 4px;
+    a {
+      color: $cyan;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+}
+
+.table {
+  display: table;
+  width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: scroll;
+  .th-row {
+    margin: 0 auto;
+    position: relative;
+    display: table-row;
+    width: 100%;
+    &.hidden .th {
+      padding-bottom: 11px;
+      color: $black;
+      font-size: 14px;
+      font-weight: 700;
+      border: 0;
+      padding-right: 10px;
+      vertical-align: middle;
+    }
+    .th, .td {
+      display: table-cell;
+      width: 9%;
+      &:first-child {
+        padding-left: 11px;
+      }
+      &:last-child {
+        padding-right: 11px;
+      }
+      &.compact {
+        width: 10%;
+      }
+      &.identificator {
+        width: 40px;
+      }
+      &.date {
+        width: 30%;
+      }
+    }
+    .td {
+      padding: 15px 10px 10px 0;
+      border-bottom: 1px solid $light;
+      font-size: 15px;
+      font-weight: 400;
+      &.date, &.compact {
+        color: #9d9d9d;
+      }
+    }
+  }
+}
+
+.loader {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  min-width: 100vh;
+  z-index: 999;
+  background-color: rgba($white, .5);
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .3s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+.flash {
+  text-align: center;
+  padding: 7px 0;
+  font-weight: 400;
+  font-size: 15px;
+  color: $white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  &.notice {
+    background-color: $cyan;
+  }
+  &.error {
+    background-color: #CD0214;
+  }
+}
