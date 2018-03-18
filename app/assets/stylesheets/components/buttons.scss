@@ -19,4 +19,15 @@
       background-color: $cyan-dark;
     }
   }
+  &.default {
+    background-color: $light-gray;
+    color: $black;
+    font-weight: 700;
+    min-width: 148px;
+    padding: 13px 20px;
+    &:hover {
+      background-color: $cyan;
+      color: $white;
+    }
+  }
 }

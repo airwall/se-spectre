@@ -1,0 +1,15 @@
+section#customers
+  .heading-wrap
+    h3 = @login["provider_name"]
+  .main-content
+    .table
+      - @login.each do |value|
+        - if value[0] != 'last_attempt'
+          .th-row
+            .td.identificator
+              = value[0]
+            .td.compact
+              = (value[1].is_a? Array) ? value[1].split.join(', ') : value[1]
+    .action-buttons
+      = link_to 'Back', logins_path, class: 'btn default'
+      a.btn.default Destroy

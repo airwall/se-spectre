@@ -44,6 +44,19 @@
     }
 }
 
+.action-buttons {
+  width: 100%;
+  padding: 0 30px;
+  padding-top: 40px;
+  text-align: right;
+  @include cf;
+  margin-left: auto;
+  margin-right: auto;
+  .btn:last-child {
+    margin-left: 20px;
+  }
+}
+
 .table {
   display: table;
   width: 640px;
