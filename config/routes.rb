@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   resources :logins, only: %i(show index) do
     post "refresh", to: "logins#refresh", as: :refresh
     post "reconnect", to: "logins#reconnect", as: :reconnect
-    post "destroy", to: "logins#destroy", as: :destroy    
+    post "destroy", to: "logins#destroy", as: :destroy
   end
+
+  get "oops", to: "application#bad_request", as: :oops
 end

@@ -21,6 +21,17 @@ document.addEventListener('turbolinks:load', () => {
       components: {
         'login-destroy':LoginDestroy,
         Loader
+      },
+      mounted() {
+        var flash = document.getElementById('flash')
+        if (flash) {
+          setTimeout(()=>{
+            flash.style.display = 'none'
+          }, 4050)
+        }
+        if (window.location.pathname.includes('oops') && flash) {
+          flash.style.display = 'none'
+        }
       }
     })
   }

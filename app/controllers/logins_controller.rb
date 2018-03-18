@@ -6,20 +6,20 @@ class LoginsController < ApplicationController
 
   def show
     @id = params[:id]
-    @login = @client.request("GET", "logins/#{@id}", {})
-    @login = @login[:response]['data']
+    @login = api_callback("GET", "logins/#{@id}", {})
+    @login = get_data(@login)
   end
 
   def index
-    @logins = @client.request("GET", "logins", {})
-    @logins = @logins[:response]['data']
+    @logins = api_callback("GET", "logins", {})
+    @logins = get_data(@logins)
   end
 
   def token
     @customer_id = params[:customer_id]
     @data = { customer_id: @customer_id, return_to: root_url , fetch_scopes: [ "accounts", "transactions" ] }
-    @token = @client.request("POST", "tokens/create", {data: @data})
-    redirect_to @token[:response]['data']['connect_url']
+    @token = api_callback("POST", "tokens/create", {data: @data})
+    redirect_to get_data(@token)['connect_url']
   end
 
   def refresh
@@ -33,7 +33,7 @@ class LoginsController < ApplicationController
   end
 
   def destroy
-    @data = @client.request("DELETE", "logins/#{@id}", {})
+    @data = api_callback("DELETE", "logins/#{@id}", {})
     render json: { data: @data[:response] }, status: @data[:status]
   end
 
@@ -41,7 +41,7 @@ class LoginsController < ApplicationController
 
   def call_api(path)
     @data = { login_id: @id, return_to: logins_url, fetch_scopes: [ "accounts", "transactions" ] }
-    @response = @client.request("POST", "tokens/#{path}", {data: @data})
+    @response =  api_callback("POST", "tokens/#{path}", {data: @data})
   end
 
   def set_client

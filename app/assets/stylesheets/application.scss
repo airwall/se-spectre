@@ -145,6 +145,15 @@
     background-color: $cyan;
   }
   &.error {
-    background-color: #CD0214;
+    background-color: rgba(#CD0214, .7);
   }
+  &.none {
+    display: none;
+  }
+}
+
+.bad-request {
+  padding: 70px 20px;
+  text-align: center;
+  font-size: 18px;
 }

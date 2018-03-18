@@ -1,0 +1,6 @@
+section
+  .heading-wrap
+    h3 Something it's wrong!
+  .main-content
+    - flash.each do |key, value|
+      = content_tag :div, value, class: "bad-request #{key}"

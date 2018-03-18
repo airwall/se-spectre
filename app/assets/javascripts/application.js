@@ -14,12 +14,12 @@
 //= require turbolinks
 //= require_tree .
 
-document.addEventListener('turbolinks:load', () => {
-
-  var flash = document.getElementById('flash')
-  if (flash) {
-    setTimeout(()=>{
-      flash.style.display = 'none'
-    }, 4050)
-  }
-})
+// document.addEventListener('turbolinks:load', () => {
+//
+//   var flash = document.getElementById('flash')
+//   if (flash) {
+//     setTimeout(()=>{
+//       flash.style.display = 'none'
+//     }, 4050)
+//   }
+// })
