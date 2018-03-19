@@ -34,7 +34,7 @@ class Saltedge
     data = { response: JSON.parse(response.body), status: response.code }
   rescue RestClient::Exception => error
     # Catch error to Rollbar. www.rollbar.com
-    Rollbar.error(error.response)
+    Rollbar.error(error.response) if Rails.env.production?
     data = { response: JSON.parse(error.response.body), status: error.response.code }
     pp data
   end
