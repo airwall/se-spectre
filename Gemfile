@@ -41,6 +41,7 @@ gem "font-awesome-rails"
 gem 'devise'
 
 gem 'rest-client'
+gem 'rollbar'
 
 group :test do
   gem 'database_cleaner'

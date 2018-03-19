@@ -33,6 +33,8 @@ class Saltedge
     )
     data = { response: JSON.parse(response.body), status: response.code }
   rescue RestClient::Exception => error
+    # Catch error to Rollbar. www.rollbar.com
+    Rollbar.error(error.response)
     data = { response: JSON.parse(error.response.body), status: error.response.code }
     pp data
   end
